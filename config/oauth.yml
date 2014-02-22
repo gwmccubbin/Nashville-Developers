@@ -1,0 +1,19 @@
+development:
+  facebook: "facebook"
+  app_id: '1395270500738715'
+  secret_key: 'f8d1fc5612acb313eba5ad0d8f680389'
+
+production:
+  config: "facebook"
+  app_id: "1395270500738715"
+  secret_key: "f8d1fc5612acb313eba5ad0d8f680389"
+
+development:
+  config: "twitter"
+  app_id:
+  secret_key:
+
+production:
+  config: "twitter"
+  app_id:
+  secret_key:
