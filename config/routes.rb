@@ -3,6 +3,7 @@ Devise1::Application.routes.draw do
 
   devise_scope :user do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+    get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
   # The priority is based upon order of creation:

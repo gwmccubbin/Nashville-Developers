@@ -1,6 +1,7 @@
 <h1>Welcome to my devise app</h1>
 <% if current_user %>
 	<p>Hello, <%= current_user.full_name %>!</p>
+	<p><%= link_to "Sign Out", destroy_user_session_path(current_user) %></p>
 <% else %>
 	<p>
 		<%= button_to "login with Facebook!", user_omniauth_authorize_path(:facebook) %>
