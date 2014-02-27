@@ -1,19 +1,15 @@
 development:
-  facebook: "facebook"
-  app_id: '1395270500738715'
-  secret_key: 'f8d1fc5612acb313eba5ad0d8f680389'
+  facebook: 
+    app_id: '1395270500738715'
+    secret_key: 'f8d1fc5612acb313eba5ad0d8f680389'
+  twitter:
+    app_id: "JLBZPjcEDx67BlJMZ8pgYw"
+    secret_key: "pu1yPAjNBoGJVGqK6Fl0YwhGWmU8Ft490Q7eMR4gww"
 
 production:
-  config: "facebook"
-  app_id: "1395270500738715"
-  secret_key: "f8d1fc5612acb313eba5ad0d8f680389"
-
-development:
-  config: "twitter"
-  app_id:
-  secret_key:
-
-production:
-  config: "twitter"
-  app_id:
-  secret_key:
+  facebook: 
+    app_id: ""
+    secret_key: ""
+  twitter:
+    app_id:
+    secret_key:

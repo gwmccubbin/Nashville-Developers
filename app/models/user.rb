@@ -49,9 +49,33 @@ class User < ActiveRecord::Base
         user = User.create(first_name: auth.extra.raw_info.first_name,
                            last_name: auth.extra.raw_info.last_name,
                            email: auth.info.email,
-                           password: "EveryFacebokPWD1")
+                           password: Devise.friendly_token[0,20])
 
         user.add_authorization_for_facebook(auth.uid, auth.credentials.try(:token))
+      end
+      user
+    end
+
+    def find_or_create_by_twitter_oauth(auth, signed_in_resource = nil)
+      authorization = Authorization.get_twitter_user(auth.uid)
+      user = authorization.try(:user)
+
+      if signed_in_resource
+        unless signed_in_resource == user
+          signed_in_resource.add_authorization_for_twitter(auth.uid, auth.credentials.try(:token), auth.credentials.try(:secret))
+          signed_in_resource.save
+        end
+
+        return signed_in_resource
+      end
+
+      unless user
+        first_name = auth.extra.raw_info.name.slice(/\A(\w*)\b/)
+        user = User.create(first_name: first_name,
+                           email: "#{first_name}@isignedupwithtwitter.com",
+                           password: Devise.friendly_token[0,20])
+
+        user.add_authorization_for_twitter(auth.uid, auth.credentials.try(:token), auth.credentials.try(:secret))
       end
       user
     end
